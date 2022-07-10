@@ -116,7 +116,7 @@
 
 			
 		</plugins>
-		<finalName>user-service-0.0.1</finalName>
+		<finalName>user-service-0.0.2</finalName>
 	</build>
 
 </project>
