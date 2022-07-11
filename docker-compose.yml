@@ -1,0 +1,61 @@
+version: "3.8"
+
+
+
+services:                      
+
+  sawrimongodb:
+    image: mongo:latest
+    container_name: "sawrimongodb" 
+    ports:
+      - "27017:27017"
+    networks:
+       - sawri-network   
+      
+  user-service:
+    image: sawrilodhi/user-service-0.0.1
+    ports:
+      -  "9091:9091"
+    links:
+      - sawrimongodb
+    networks:
+       - sawri-network   
+               
+  category-service:
+    image: sawrilodhi/category-service-0.0.1
+    ports:
+      -  "9096:9096"
+    links:
+      - sawrimongodb  
+    networks:
+       - sawri-network   
+      
+  product-service:
+    image: sawrilodhi/product-service-0.0.1
+    ports: 
+      -  "9093:9093"
+    links:
+      - sawrimongodb  
+    networks:
+       - sawri-network   
+      
+  cart-service:
+    image: sawrilodhi/cart-service-0.0.1
+    ports:
+      -  "9094:9094"
+    links:
+      - sawrimongodb  
+    networks:
+       - sawri-network  
+        
+  order-service:
+     image: sawrilodhi/order-service-0.0.1
+     ports:
+       -  "9095:9095"  
+     links:
+      - sawrimongodb            
+     networks:
+       - sawri-network 
+ 
+networks:
+  sawri-network:       
